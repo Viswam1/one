@@ -1,1033 +1,752 @@
-<!doctype html>
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MyShop — Modern E‑Commerce</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Nexus Church · future faith</title>
     <!-- Fonts & Icons -->
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root {
-            --bg: #ffffff;
-            --primary: #0a2540;
-            --accent: #00d4ff;
-            --muted: #7a7a7a;
-            --card: #ffffff;
-            --surface: #f6f9fc;
-            --success: #28a745;
-            --radius: 12px;
-            --container: 1200px;
- --container: 1200px;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        html,
+        /* ----- RESET & ROOTS ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            height: 100%
-        }
-
-        body {
-            margin: 0;
-            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            color: var(--primary);
-            background: var(--bg);
+            background: #0b0d15;
+            color: #eef3fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.4;
         }
-
-        a {
-            color: inherit;
-            text-decoration: none
+        :root {
+            --bg-deep: #07080e;
+            --glass: rgba(20, 30, 50, 0.55);
+            --glass-border: rgba(0, 212, 255, 0.18);
+            --accent-cyan: #00d4ff;
+            --accent-blue: #4f7dff;
+            --accent-glow: #00d4ff55;
+            --text-light: #f0f7ff;
+            --muted: #a0b4d0;
+            --radius-lg: 28px;
+            --radius-md: 16px;
+            --shadow-glow: 0 20px 40px -12px rgba(0, 180, 255, 0.25);
         }
-
+        a { color: inherit; text-decoration: none; }
         .container {
-            width: 100%;
-            max-width: var(--container);
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-
-        /* Header */
+        /* ----- GLASS & FUTURISTIC ELEMENTS ----- */
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-glow);
+            border-radius: var(--radius-md);
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #e0f0ff, #7abfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        .section-sub {
+            color: var(--muted);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-top: 4px;
+        }
+        /* ----- HEADER (sticky glass) ----- */
         header {
             position: sticky;
             top: 0;
-            z-index: 40;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
-            border-bottom: 1px solid rgba(10, 37, 64, 0.04);
-            backdrop-filter: blur(4px);
+            z-index: 50;
+            background: rgba(7, 8, 14, 0.7);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.08);
         }
-
         .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
             padding: 14px 0;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-family: Poppins, sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: 20px;
-            color: var(--primary);
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
         }
-
+        .brand i {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
         .brand .accent {
-            color: var(--accent)
+            color: var(--accent-cyan);
         }
-
-        nav.main-nav {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
         nav.main-nav ul {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             list-style: none;
-            margin: 0;
-            padding: 0;
             align-items: center;
         }
-
-        nav.main-nav li a {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            padding: 8px 10px;
-            border-radius: 8px;
-            color: var(--primary);
+        nav.main-nav ul li a {
+            padding: 8px 14px;
+            border-radius: 40px;
             font-weight: 500;
-        }
-
-        nav.main-nav li a:hover {
-            background: var(--surface);
-            color: var(--accent)
-        }
-
-        .search {
+            font-size: 0.95rem;
+            transition: 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: var(--surface);
-            padding: 8px 12px;
-            border-radius: 999px;
-            min-width: 240px;
+            gap: 6px;
+            color: var(--muted);
         }
-
-        .search input {
-            border: 0;
-            background: transparent;
-            outline: none;
-            width: 100%;
-            font-size: 14px;
+        nav.main-nav ul li a:hover,
+        nav.main-nav ul li a.active {
+            background: rgba(0, 212, 255, 0.08);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
         }
-
-        .icon-btn {
-            background: transparent;
-            color: var(--primary);
-            border: 0;
-            cursor: pointer;
-            color: var(--primary);
-            font-size: 16px;
-            color: var(--primary);
-        }
-
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-
-        .cart {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .icon-btn {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-size: 1.2rem;
+            cursor: pointer;
             padding: 6px 8px;
-            border-radius: 8px;
+            border-radius: 40px;
+            transition: 0.2s;
         }
-
-        .cart-count {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: var(--accent);
+        .icon-btn:hover {
             color: white;
-            font-size: 11px;
-            font-weight: 700;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: inline-grid;
-            place-items: center;
+            background: rgba(255,255,255,0.02);
         }
-
         .mobile-toggle {
             display: none;
-            border: 0;
             background: transparent;
-            font-size: 20px;
+            border: 0;
+            color: white;
+            font-size: 1.6rem;
             cursor: pointer;
         }
+        #mobileMenu {
+            background: rgba(7, 8, 14, 0.92);
+            backdrop-filter: blur(18px);
+            border-top: 1px solid rgba(0, 212, 255, 0.08);
+        }
+        #mobileMenu ul {
+            list-style: none;
+            padding: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        #mobileMenu ul li a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--muted);
+            font-weight: 500;
+            border-radius: 12px;
+        }
+        #mobileMenu ul li a:hover {
+            background: rgba(0, 212, 255, 0.05);
+            color: white;
+        }
 
-        /* Hero */
-        .hero {
+        /* ----- HERO (cosmic) ----- */
+        .hero-church {
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background:
-                linear-gradient(180deg, rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)),
-                url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            color: white;
-            min-height: 420px;
-            padding: 56px 20px;
-            border-bottom-left-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
+            background: 
+                radial-gradient(ellipse at 20% 30%, #001d3d 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 70%, #002855 0%, transparent 60%),
+                linear-gradient(135deg, #080c1a, #0b1428);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            margin-bottom: 20px;
         }
-
-        .hero h1 {
-            font-family: Poppins;
-            font-size: 40px;
-            margin: 0 0 12px;
+        .hero-church::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.03"><circle cx="400" cy="400" r="300" fill="%2300d4ff"/><circle cx="200" cy="200" r="120" fill="%234f7dff"/><circle cx="650" cy="300" r="160" fill="%2300d4ff"/></svg>') center/cover no-repeat;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 40px 0;
+        }
+        .hero-church h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 3.8rem;
             letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #a0d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(0, 180, 255, 0.2);
         }
-
-        .hero p {
-            margin: 0 0 22px;
-            opacity: 0.95;
-            max-width: 820px;
+        .hero-church p {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin: 20px 0 32px;
+            max-width: 540px;
+            backdrop-filter: blur(2px);
         }
-
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 18px;
-            border-radius: 999px;
+            padding: 12px 28px;
+            border-radius: 60px;
             font-weight: 600;
-            cursor: pointer;
             border: 0;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-size: 1rem;
         }
-
         .btn-primary {
-            background: var(--accent);
-            color: #042233;
+            background: var(--accent-cyan);
+            color: #0b0d15;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
         }
-
-        .btn-ghost {
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
+        }
+        .btn-outline {
             background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.18);
+            border: 1.5px solid rgba(255,255,255,0.15);
             color: white;
         }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: var(--accent-cyan);
+        }
 
-        /* Sections */
+        /* ----- SECTIONS (cards) ----- */
         .section {
-            padding: 48px 0;
+            padding: 56px 0 32px;
         }
-
-        .section .title {
-            text-align: center;
-            margin-bottom: 18px;
-        }
-
-        .grid {
+        .grid-2col {
             display: grid;
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
         }
-
-        /* Categories */
-        .categories {
-            grid-template-columns: repeat(6, 1fr);
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 24px;
         }
-
-        .cat-card {
-            background: var(--card);
-            border-radius: 12px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.04);
-            transition: transform .18s ease, box-shadow .18s ease;
+        .feature-card {
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.02);
+            border-radius: var(--radius-md);
+            padding: 28px 22px;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 24px -8px rgba(0,0,0,0.6);
         }
-
-        .cat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(10, 37, 64, 0.06);
+        .feature-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.06);
+            transform: translateY(-4px);
         }
-
-        .cat-card .icon {
-            font-size: 28px;
-            color: var(--accent);
+        .feature-card .icon {
+            font-size: 2.4rem;
+            color: var(--accent-cyan);
+            margin-bottom: 14px;
+        }
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
             margin-bottom: 8px;
         }
-
-        .cat-card h4 {
-            margin: 6px 0 0;
-            font-size: 15px;
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        /* Products */
-        .products {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .product {
-            background: var(--card);
-            border-radius: 12px;
+        /* ----- SERMON / EVENT (futuristic) ----- */
+        .sermon-card {
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-md);
+            padding: 0;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.04);
+            border: 1px solid rgba(255,255,255,0.02);
+            transition: 0.3s;
         }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
+        .sermon-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
         }
-
-        .product-body {
-            padding: 12px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex: 1;
-        }
-
-        .product h5 {
-            margin: 0;
-            font-size: 15px;
-        }
-
-        .price-row {
+        .sermon-card .img-wrap {
+            height: 180px;
+            background: #111a2e;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 8px;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 3rem;
+            background: radial-gradient(circle at 30% 40%, #142a44, #0a111f);
         }
-
-        .price {
-            font-weight: 700;
-            color: var(--primary);
+        .sermon-card .body {
+            padding: 20px 18px 22px;
         }
-
-        .old-price {
+        .sermon-card .body h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .sermon-card .body .meta {
             color: var(--muted);
-            text-decoration: line-through;
-            font-weight: 500;
-            font-size: 13px;
-        }
-
-        .rating {
-            color: #ffc107;
-            font-size: 13px;
-        }
-
-        .product-footer {
-            padding: 12px;
+            font-size: 0.9rem;
             display: flex;
-            gap: 10px;
+            gap: 16px;
+            margin: 8px 0 14px;
+        }
+        .tag {
+            background: rgba(0, 212, 255, 0.08);
+            color: var(--accent-cyan);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(0,212,255,0.1);
         }
 
-        .add-btn {
-            flex: 1;
-            background: var(--primary);
-            color: white;
-            border: 0;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
+        /* ----- TESTIMONIALS (carousel) ----- */
+        .testimonials-wrap {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 12px 4px 20px;
+            scroll-snap-type: x mandatory;
+        }
+        .testimonial-item {
+            min-width: 280px;
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            padding: 24px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.02);
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        .testimonial-item .stars {
+            color: #f7b731;
+            letter-spacing: 2px;
+        }
+        .testimonial-item p {
+            font-style: italic;
+            color: #d0e0f5;
+            margin: 12px 0;
+        }
+        .testimonial-item .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #0b0d15;
+        }
+
+        /* ----- NEWSLETTER (glow) ----- */
+        .newsletter-glow {
+            background: radial-gradient(circle at 30% 30%, #0a1e3a, #05080f);
+            border: 1px solid rgba(0, 212, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(0, 180, 255, 0.02);
+        }
+        .newsletter-glow h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
             font-weight: 600;
         }
-
-        .wish-btn {
-            background: transparent;
-            border: 1px solid rgba(10, 37, 64, 0.06);
-            padding: 8px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        /* Deal */
-        .deal {
+        .newsletter-glow .input-group {
             display: flex;
-            gap: 18px;
-            background: var(--surface);
-            border-radius: 12px;
-            overflow: hidden;
-            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
-
-        .deal img {
-            width: 50%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .deal .content {
-            padding: 28px;
-            flex: 1;
-        }
-
-        .timer {
-            display: flex;
-            gap: 12px;
-            margin: 18px 0;
-        }
-
-        .time-box {
-            background: var(--primary);
+        .newsletter-glow input {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 14px 24px;
+            border-radius: 60px;
+            min-width: 280px;
             color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            min-width: 76px;
-            text-align: center;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        .newsletter-glow input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
         }
 
-        .deal .price {
-            font-size: 26px;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            display: flex;
-            gap: 14px;
-            overflow-x: auto;
-            padding: 12px 4px;
-        }
-
-        .testimonial {
-            min-width: 320px;
-            background: white;
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.04);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background: var(--primary);
-            color: white;
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-        }
-
-        .newsletter input {
-            padding: 12px 14px;
-            border-radius: 999px;
-            border: 0;
-            width: 320px;
-            max-width: 100%;
-            margin-right: 8px;
-        }
-
-        /* Footer */
+        /* ----- FOOTER (cyber) ----- */
         footer {
-            margin-top: 24px;
-            padding: 36px 0;
-            border-top: 1px solid rgba(10, 37, 64, 0.04);
+            border-top: 1px solid rgba(255,255,255,0.02);
+            padding: 40px 0 28px;
+            margin-top: 20px;
             color: var(--muted);
-            font-size: 14px;
+        }
+        footer .brand i {
+            color: var(--accent-cyan);
+        }
+        .footer-links {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .footer-links div {
+            min-width: 120px;
+        }
+        .footer-links h5 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .footer-links a {
+            display: block;
+            padding: 4px 0;
+            color: var(--muted);
+            transition: 0.2s;
+        }
+        .footer-links a:hover {
+            color: white;
         }
 
-        /* Responsive */
-        @media (max-width:1200px) {
-            .categories {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .products {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1024px) {
+            .grid-2col { grid-template-columns: 1fr; }
+            .grid-3col { grid-template-columns: 1fr 1fr; }
         }
-
-        @media (max-width:900px) {
-            nav.main-nav {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: inline-block;
-            }
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .deal img {
-                height: 220px;
-                width: 40%;
-            }
+        @media (max-width: 768px) {
+            nav.main-nav { display: none; }
+            .mobile-toggle { display: inline-block; }
+            .grid-3col { grid-template-columns: 1fr; }
+            .hero-church h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.8rem; }
+            .newsletter-glow input { min-width: 100%; }
         }
-
-        @media (max-width:600px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .deal {
-                flex-direction: column;
-            }
-
-            .deal img {
-                width: 100%;
-                height: 220px;
-            }
+        @media (max-width: 480px) {
+            .hero-church h1 { font-size: 2rem; }
+            .btn { padding: 10px 20px; }
         }
-
         /* small utilities */
-        .muted {
-            color: var(--muted);
-        }
-
-        .text-center {
-            text-align: center
-        }
+        .muted { color: var(--muted); }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 24px; }
+        .gap-2 { gap: 12px; }
     </style>
-   
 </head>
-
 <body>
     <header>
-        <div class="container header-inner" role="banner">
+        <div class="container header-inner">
             <div style="display:flex;align-items:center;gap:18px;">
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu"><em class="fas fa-bars"></em></button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
                 <a class="brand" href="#">
-                    <span>Nexus<span class="accent">Shop</span></span>
+                    <i class="fas fa-church"></i>
+                    <span>Nexus<span class="accent">Church</span></span>
                 </a>
             </div>
-
-            <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+            <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="#"><em class="fas fa-home"></em> Home</a></li>
-                    <li class="has-dropdown" aria-haspopup="true">
-                        <a href="#" id="catMenuBtn"><em class="fas fa-th-large"></em> Categories <em class="fas fa-chevron-down" style="font-size:12px;"></em></a>
-                    </li>
-                    <li><a href="#"><em class="fas fa-fire"></em> Trending</a></li>
-                    <li><a href="#deals"><em class="fas fa-tag"></em> Deals</a></li>
-                    <li><a href="#about"><em class="fas fa-info-circle"></em> About</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#sermons"><i class="fas fa-bible"></i> Sermons</a></li>
+                    <li><a href="#events"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="#community"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="#prayer"><i class="fas fa-hands-praying"></i> Prayer</a></li>
                 </ul>
             </nav>
-
-            <div style="display:flex;align-items:center;gap:14px;">
-                <div class="search" role="search" aria-label="Product search">
-                    <emnput type="search" id="searchInput" placeholder="Search products, categories..." aria-label="Search products" />
-                    <button class="icon-btn" id="searchBtn" aria-label="Search"><em class="fas fa-search"></em></button>
-                </div>
-
-                <div class="header-actions" role="group" aria-label="Header actions">
-                    <a class="icon-btn" title="Account" href="#"><em class="far fa-user"></em></a>
-                    <a class="icon-btn" title="Wishlist" href="#"><em class="far fa-heart"></em></a>
-                    <a class="cart" href="#" id="cartBtn" title="View cart" aria-label="Cart">
-                        <em class="fas fa-shopping-cart"></em>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </a>
-                </div>
+            <div class="header-actions">
+                <button class="icon-btn" title="Live"><i class="fas fa-broadcast-tower"></i></button>
+                <button class="icon-btn" title="Give"><i class="fas fa-hand-holding-heart"></i></button>
+                <button class="icon-btn" id="cartBtn" title="Connect"><i class="fas fa-user-circle"></i></button>
             </div>
         </div>
-
-        <!-- Mobile menu (hidden on desktop) -->
-        <div id="mobileMenu" style="display:none; background:var(--bg); border-top:1px solid rgba(10,37,64,0.04);">
-            <div class="container" style="padding:12px 0;">
-                <nav aria-label="Mobile navigation">
-                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Trending</a></li>
-                        <li><a href="#deals">Deals</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </nav>
+        <!-- mobile menu -->
+        <div id="mobileMenu" style="display:none;">
+            <div class="container">
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#sermons"><i class="fas fa-bible"></i> Sermons</a></li>
+                    <li><a href="#events"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="#community"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="#prayer"><i class="fas fa-hands-praying"></i> Prayer</a></li>
+                </ul>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="hero" role="img" aria-label="Hero banner">
-            <div class="container">
-                <h1>New Winter Collection  Premium Picks</h1>
-                <p>Discover the latest trends in fashion, technology and accessories — curated just for you. Enjoy limited-time deals and free shipping on selected items.</p>
+        <!-- HERO -->
+        <section class="hero-church container">
+            <div class="hero-content">
+                <div class="tag" style="margin-bottom:12px; display:inline-block;">&#9889; future faith</div>
+                <h1>Hope amplified<br>in the digital age</h1>
+                <p>Gather, grow, and serve — Nexus Church is a community of believers embracing tomorrow, today. Join our live services, prayer meetings, and discipleship.</p>
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="liveBtn"><i class="fas fa-play-circle"></i> Watch Live</button>
+                    <button class="btn btn-outline" id="visitBtn"><i class="fas fa-map-pin"></i> Visit Us</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES (core values) -->
+        <section class="section container" id="community">
+            <div style="text-align:center; margin-bottom:32px;">
+                <span class="section-title">Our foundation</span>
+                <p class="section-sub">Rooted in faith, reaching forward</p>
+            </div>
+            <div class="grid-3col">
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-praying-hands"></i></div>
+                    <h3>Worship</h3>
+                    <p>Contemporary and traditional worship experiences that connect hearts to God.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-people-arrows"></i></div>
+                    <h3>Community</h3>
+                    <p>Small groups, youth ministries, and fellowship that build lasting relationships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Service</h3>
+                    <p>Outreach programs, missions, and local initiatives that make a tangible difference.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERMONS (dynamic) -->
+        <section class="section container" id="sermons">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:24px;">
                 <div>
-                    <button class="btn btn-primary" id="shopNow">Shop Now <em class="fas fa-arrow-right"></em></button>
-                    <button class="btn btn-ghost" id="exploreDeals">Explore Deals</button>
+                    <span class="section-title">Recent sermons</span>
+                    <p class="section-sub">Watch, listen, and be inspired</p>
                 </div>
+                <a href="#" style="color:var(--accent-cyan); font-weight:500;"><i class="fas fa-arrow-right"></i> All messages</a>
+            </div>
+            <div class="grid-3col" id="sermonGrid">
+                <!-- injected by js -->
             </div>
         </section>
 
-        <!-- Categories -->
-        <section class="section container" aria-labelledby="cat-title">
-            <div class="title" id="cat-title">
-                <h2 class="section-title">Shop by Category</h2>
-                <p class="muted">Browse through our wide range of products across curated categories.</p>
+        <!-- EVENTS -->
+        <section class="section container" id="events">
+            <div style="text-align:center; margin-bottom:28px;">
+                <span class="section-title">Upcoming events</span>
+                <p class="section-sub">Gather with us in person or online</p>
             </div>
-
-            <div class="grid categories" id="categoriesGrid" aria-live="polite"></div>
+            <div class="grid-2col" id="eventsGrid">
+                <!-- injected -->
+            </div>
         </section>
 
-        <!-- Products -->
-        <section class="section container" aria-labelledby="prod-title">
-            <div class="title" id="prod-title">
-                <h2>Trending Products</h2>
-                <p class="muted">Popular picks based on recent activity.</p>
+        <!-- TESTIMONIALS -->
+        <section class="section container">
+            <div style="margin-bottom:24px;">
+                <span class="section-title">Stories of faith</span>
+                <p class="section-sub">Real people, real encounters</p>
             </div>
-
-            <div class="grid products" id="productsGrid" aria-live="polite"></div>
+            <div class="testimonials-wrap" id="testimonialsWrap">
+                <!-- injected -->
+            </div>
         </section>
 
-        <!-- Deals -->
-        <section id="deals" class="section container" aria-labelledby="deals-title">
-            <div class="title" id="deals-title">
-                <h2>Flash Sale</h2>
-                <p class="muted">Limited-time offers — don't miss out!</p>
-            </div>
-
-            <div class="deal" style="align-items:stretch;">
-                <emmg src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80" alt="Deal product">
-                <div class="content">
-                    <h3>MacBook Air M2</h3>
-                    <p class="muted">Thin, light and powerful — now with M2 performance.</p>
-
-                    <div class="timer" aria-hidden="false">
-                        <div class="time-box">
-                            <div id="dealDays">0</div>
-                            <div style="font-size:12px;opacity:.85">Days</div>
-                        </div>
-                        <div class="time-box">
-                            <div id="dealHours">00</div>
-                            <div style="font-size:12px;opacity:.85">Hours</div>
-                        </div>
-                        <div class="time-box">
-                            <div id="dealMinutes">00</div>
-                            <div style="font-size:12px;opacity:.85">Minutes</div>
-                        </div>
-                        <div class="time-box">
-                            <div id="dealSeconds">00</div>
-                            <div style="font-size:12px;opacity:.85">Seconds</div>
-                        </div>
-                    </div>
-
-                    <div style="display:flex;align-items:center;gap:12px;">
-                        <div class="price">$999 <span class="old-price" style="font-size:16px">$1,199</span></div>
-                        <div class="deal-discount" style="background:#ff4757;color:white;padding:6px 10px;border-radius:8px;font-weight:700">-17%</div>
-                    </div>
-
-                    <p style="margin-top:10px;">Only <strong>12</strong> items left at this price!</p>
-                    <div style="margin-top:18px;">
-                        <button class="btn btn-primary" id="buyDeal">Buy Now</button>
-                    </div>
+        <!-- PRAYER / NEWSLETTER -->
+        <section class="section container" id="prayer">
+            <div class="newsletter-glow">
+                <h3><i class="fas fa-pray" style="color:var(--accent-cyan); margin-right:10px;"></i>Prayer &amp; Updates</h3>
+                <p style="color:var(--muted); max-width:540px; margin:10px auto;">Share your prayer requests or subscribe to receive weekly devotions and church news.</p>
+                <div class="input-group">
+                    <input type="email" id="prayerEmail" placeholder="Your email or prayer request" aria-label="Prayer or email">
+                    <button class="btn btn-primary" id="prayerBtn"><i class="fas fa-paper-plane"></i> Send</button>
                 </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section class="section container" aria-labelledby="test-title">
-            <div class="title" id="test-title">
-                <h2>What our customers say</h2>
-                <p class="muted">Real reviews from verified buyers.</p>
-            </div>
-
-            <div class="testimonials" id="testimonials">
-                <div class="testimonial">
-                    <div class="rating">★★★★★</div>
-                    <p>"Fast shipping and excellent customer support. The product exceeded my expectations!"</p>
-                    <div style="display:flex;align-items:center;gap:10px">
-                        <emmg src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
-                        <div>
-                            <div style="font-weight:700">Ava Martin</div>
-                            <div class="muted" style="font-size:13px">Verified buyer</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <div class="rating">★★★★☆</div>
-                    <p>"Great selection and the checkout was smooth. Will shop again."</p>
-                    <div style="display:flex;align-items:center;gap:10px">
-                        <emmg src="https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
-                        <div>
-                            <div style="font-weight:700">Michael Lee</div>
-                            <div class="muted" style="font-size:13px">Frequent buyer</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section class="section container" aria-labelledby="news-title">
-            <div class="newsletter" id="newsletter">
-                <h3 id="news-title">Stay in the loop</h3>
-                <p>Subscribe to get exclusive offers & new arrivals</p>
-                <form id="newsletterForm" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;" onsubmit="return false;">
-                    <emnput id="newsletterEmail" type="email" placeholder="Enter your email" aria-label="Email address" required>
-                    <button class="btn btn-primary" id="subscribeBtn">Subscribe</button>
-                </form>
-                <div id="newsletterMsg" style="margin-top:10px;font-size:14px;display:none"></div>
+                <div id="prayerMsg" style="margin-top:14px; font-size:0.95rem; color:var(--accent-cyan);"></div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container" style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between">
-            <div style="max-width:360px">
-                <div style="font-weight:700;font-size:18px">NexusShop</div>
-                <p class="muted" style="margin-top:8px">A modern e-commerce demo built with HTML, CSS & JavaScript.</p>
-                <div style="margin-top:14px;display:flex;gap:10px">
-                    <a class="icon-btn" href="#" title="Facebook"><em class="fab fa-facebook"></em></a>
-                    <a class="icon-btn" href="#" title="Twitter"><em class="fab fa-twitter"></em></a>
-                    <a class="icon-btn" href="#" title="Instagram"><em class="fab fa-instagram"></em></a>
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px;">
+            <div style="max-width:320px;">
+                <div class="brand" style="font-size:1.5rem; margin-bottom:8px;">
+                    <i class="fas fa-church"></i> Nexus<span class="accent">Church</span>
+                </div>
+                <p class="muted" style="font-size:0.95rem;">A future-forward faith community. <br> <span style="color:white;">&#10022; John 3:16</span></p>
+                <div style="display:flex; gap:16px; margin-top:14px;">
+                    <a href="#"><i class="fab fa-youtube" style="color:var(--accent-cyan);"></i></a>
+                    <a href="#"><i class="fab fa-instagram" style="color:var(--accent-cyan);"></i></a>
+                    <a href="#"><i class="fab fa-spotify" style="color:var(--accent-cyan);"></i></a>
                 </div>
             </div>
-
-            <div style="display:flex;gap:40px;flex:1;justify-content:flex-end;flex-wrap:wrap">
+            <div class="footer-links">
                 <div>
-                    <div style="font-weight:700;margin-bottom:8px">Company</div>
-                    <div class="muted" style="line-height:1.8">About<br>Careers<br>Press</div>
+                    <h5>Explore</h5>
+                    <a href="#">Sermons</a>
+                    <a href="#">Events</a>
+                    <a href="#">Give</a>
                 </div>
                 <div>
-                    <div style="font-weight:700;margin-bottom:8px">Support</div>
-                    <div class="muted" style="line-height:1.8">Help Center<br>Shipping & Returns<br>Contact</div>
+                    <h5>Connect</h5>
+                    <a href="#">Small Groups</a>
+                    <a href="#">Prayer</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div>
+                    <h5>About</h5>
+                    <a href="#">Our Beliefs</a>
+                    <a href="#">Leadership</a>
+                    <a href="#">Careers</a>
                 </div>
             </div>
         </div>
-
-        <div style="text-align:center;margin-top:22px;color:var(--muted);font-size:13px">© <span id="year"></span> NexusShop. All rights reserved.</div>
+        <div class="container" style="border-top:1px solid rgba(255,255,255,0.02); margin-top:24px; padding-top:20px; text-align:center; color:var(--muted); font-size:0.9rem;">
+            &copy; <span id="year"></span> Nexus Church — built on hope.
+        </div>
     </footer>
 
     <script>
-    
-        // --- Sample data (can be replaced by server-side data or API) ---
-        const CATEGORIES = [{
-                id: 'phones',
-                name: 'Smartphones',
-                icon: 'fa-mobile-alt'
-            },
-            {
-                id: 'laptops',
-                name: 'Laptops',
-                icon: 'fa-laptop'
-            },
-            {
-                id: 'clothing',
-                name: 'Clothing',
-                icon: 'fa-tshirt'
-            },
-            {
-                id: 'gadgets',
-                name: 'Gadgets',
-                icon: 'fa-headphones'
-            },
-            {
-                id: 'footwear',
-                name: 'Footwear',
-                icon: 'fa-shoe-prints'
-            },
-            {
-                id: 'accessories',
-                name: 'Accessories',
-                icon: 'fa-watch'
-            }
-        ];
+        (function(){
+            // --- DATA ---
+            const sermons = [
+                { title: 'The future of faith', speaker: 'Pastor A. Grace', date: 'May 18, 2026', icon: 'fa-bible' },
+                { title: 'Digital discipleship', speaker: 'Pastor M. K.', date: 'May 11, 2026', icon: 'fa-microphone-alt' },
+                { title: 'Hope in the age of AI', speaker: 'Dr. S. Light', date: 'May 4, 2026', icon: 'fa-church' }
+            ];
+            const events = [
+                { title: 'Youth Night Live', date: 'Fri, May 22 · 7PM', location: 'Online & Campus', icon: 'fa-users' },
+                { title: 'Worship & Prayer', date: 'Sun, May 24 · 10AM', location: 'Main Sanctuary', icon: 'fa-pray' }
+            ];
+            const testimonials = [
+                { name: 'Elena R.', text: 'This community changed my life. I found purpose and connection.', stars: 5 },
+                { name: 'David K.', text: 'The sermons are deep, relevant, and full of grace. Highly recommend.', stars: 5 },
+                { name: 'Sarah M.', text: 'I love the modern approach while staying true to the gospel.', stars: 4 }
+            ];
 
-        const PRODUCTS = [{
-                id: 1,
-                title: 'iPhone 14 Pro Max',
-                price: 1099,
-                oldPrice: 1199,
-                rating: 5,
-                reviews: 128,
-                badge: 'New',
-                img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80',
-                category: 'phones'
-            },
-            {
-                id: 2,
-                title: 'MacBook Pro 14"',
-                price: 1999,
-                rating: 4,
-                reviews: 86,
-                img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80',
-                category: 'laptops'
-            },
-            {
-                id: 3,
-                title: 'Apple Watch Series 8',
-                price: 349,
-                oldPrice: 399,
-                rating: 5,
-                reviews: 214,
-                badge: '-25%',
-                img: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80',
-                category: 'accessories'
-            },
-            {
-                id: 4,
-                title: 'Nike Air Max 270',
-                price: 150,
-                rating: 4,
-                reviews: 53,
-                img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80',
-                category: 'footwear'
-            },
-            {
-                id: 5,
-                title: 'Sony A7 IV Camera',
-                price: 2499,
-                rating: 5,
-                reviews: 42,
-                img: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80',
-                category: 'gadgets'
-            },
-            {
-                id: 6,
-                title: 'Chanel No. 5',
-                price: 120,
-                rating: 5,
-                reviews: 189,
-                img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80',
-                category: 'accessories'
-            },
-            {
-                id: 7,
-                title: 'Travel Backpack',
-                price: 79,
-                oldPrice: 99,
-                rating: 4,
-                reviews: 67,
-                img: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=600&q=80',
-                category: 'accessories'
-            },
-            {
-                id: 8,
-                title: 'Sony WH-1000XM5',
-                price: 399,
-                rating: 5,
-                reviews: 156,
-                img: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80',
-                category: 'gadgets'
-            }
-        ];
-
-        // --- Render categories & products ---
-        const categoriesGrid = document.getElementById('categoriesGrid');
-        const productsGrid = document.getElementById('productsGrid');
-        const cartCountEl = document.getElementById('cartCount');
-        const searchInput = document.getElementById('searchInput');
-
-        let cartCount = 0;
-
-        function renderCategories() {
-            categoriesGrid.innerHTML = '';
-            CATEGORIES.forEach(cat => {
-                const el = document.createElement('div');
-                el.className = 'cat-card';
-                el.innerHTML = `
-                    <div class="icon"><em class="fas ${cat.icon}"></em></div>
-                    <h4>${cat.name}</h4>
-                    <div class="muted" style="font-size:13px;margin-top:6px">Explore ${cat.name}</div>
-                `;
-                el.addEventListener('click', () => {
-                    searchInput.value = cat.name;
-                    filterProducts(cat.name);
-                    window.scrollTo({
-                        top: document.getElementById('prod-title').offsetTop - 60,
-                        behavior: 'smooth'
-                    });
-                });
-                categoriesGrid.appendChild(el);
-            });
-        }
-
-        function renderProducts(list) {
-            productsGrid.innerHTML = '';
-            list.forEach(p => {
-                const el = document.createElement('article');
-                el.className = 'product';
-                el.innerHTML = `
-                    ${p.badge ? `<div style="position:absolute;margin:12px"><span style="background:${p.badge.startsWith('-')? '#ff4757' : 'var(--success)'};color:white;padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px">${p.badge}</span></div>` : ''}
-                    <emmg src="${p.img}" alt="${escapeHtml(p.title)}">
-                    <div class="product-body">
-                        <h5>${escapeHtml(p.title)}</h5>
-                        <div class="muted">${p.category}</div>
-                        <div class="price-row">
-                            <div>
-                                <div class="price">$${p.price.toLocaleString()}</div>
-                                ${p.oldPrice ? `<div class="old-price">${p.oldPrice ? '$'+p.oldPrice.toLocaleString() : ''}</div>` : ''}
-                            </div>
-                            <div class="rating">${'★'.repeat(Math.round(p.rating))} <span style="font-size:12px;color:var(--muted)">(${p.reviews})</span></div>
+            // --- RENDER ---
+            function renderSermons() {
+                const grid = document.getElementById('sermonGrid');
+                if(!grid) return;
+                grid.innerHTML = sermons.map(s => `
+                    <div class="sermon-card">
+                        <div class="img-wrap"><i class="fas ${s.icon}"></i></div>
+                        <div class="body">
+                            <h4>${s.title}</h4>
+                            <div class="meta"><span><i class="fas fa-user"></i> ${s.speaker}</span> <span><i class="fas fa-calendar-alt"></i> ${s.date}</span></div>
+                            <div><span class="tag">Listen</span> <span class="tag" style="margin-left:6px;">Watch</span></div>
                         </div>
                     </div>
-                    <div class="product-footer">
-                        <button class="add-btn" data-id="${p.id}"><em class="fas fa-cart-plus"></em> Add</button>
-                        <button class="wish-btn" aria-label="Add to wishlist"><em class="far fa-heart"></em></button>
+                `).join('');
+            }
+
+            function renderEvents() {
+                const grid = document.getElementById('eventsGrid');
+                if(!grid) return;
+                grid.innerHTML = events.map(e => `
+                    <div class="feature-card" style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+                        <div style="background:rgba(0,212,255,0.04); border-radius:60px; padding:14px 18px; font-size:2.2rem; color:var(--accent-cyan);"><i class="fas ${e.icon}"></i></div>
+                        <div style="flex:1;">
+                            <h3 style="font-size:1.2rem;">${e.title}</h3>
+                            <div class="muted" style="display:flex; gap:18px; flex-wrap:wrap;"><span><i class="far fa-calendar-alt"></i> ${e.date}</span> <span><i class="fas fa-map-pin"></i> ${e.location}</span></div>
+                        </div>
+                        <button class="btn btn-primary" style="padding:8px 22px; font-size:0.9rem;">Attend</button>
                     </div>
-                `;
-                productsGrid.appendChild(el);
+                `).join('');
+            }
+
+            function renderTestimonials() {
+                const wrap = document.getElementById('testimonialsWrap');
+                if(!wrap) return;
+                wrap.innerHTML = testimonials.map(t => `
+                    <div class="testimonial-item">
+                        <div class="stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</div>
+                        <p>“${t.text}”</p>
+                        <div class="author">
+                            <div class="avatar">${t.name.charAt(0)}</div>
+                            <div><strong>${t.name}</strong> <div class="muted" style="font-size:0.8rem;">verified</div></div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // --- UI interactions ---
+            document.getElementById('mobileToggle')?.addEventListener('click', function(){
+                const menu = document.getElementById('mobileMenu');
+                menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
             });
 
-            // attach listeners to add buttons
-            productsGrid.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const id = Number(btn.dataset.id);
-                    addToCart(id);
-                });
+            document.getElementById('prayerBtn')?.addEventListener('click', function(){
+                const input = document.getElementById('prayerEmail');
+                const msg = document.getElementById('prayerMsg');
+                const val = input.value.trim();
+                if(!val) { msg.textContent = 'Please share your prayer or email.'; return; }
+                msg.textContent = '🙏 Thank you! We are praying with you.';
+                input.value = '';
+                setTimeout(() => { msg.textContent = ''; }, 4000);
             });
-        }
 
-        // --- Utilities ---
-        function escapeHtml(text) {
-            return String(text).replace(/[&<>"']/g, s => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;'
-            } [s]));
-        }
+            document.getElementById('liveBtn')?.addEventListener('click', function(){
+                alert('🔴 Live stream will begin at 10:00 AM (UTC-4). Stay tuned.');
+            });
+            document.getElementById('visitBtn')?.addEventListener('click', function(){
+                alert('📍 Nexus Church · 123 Faith Ave, New Hope City — all are welcome.');
+            });
 
-        function addToCart(productId) {
-            const p = PRODUCTS.find(x => x.id === productId);
-            if (!p) return;
-            cartCount++;
-            cartCountEl.textContent = cartCount;
-            // Simple feedback
-            const btn = document.querySelector(`.add-btn[data-id="${productId}"]`);
-            if (btn) {
-                const original = btn.innerHTML;
-                btn.innerHTML = 'Added ✓';
-                btn.disabled = true;
-                setTimeout(() => {
-                    btn.innerHTML = original;
-                    btn.disabled = false;
-                }, 1200);
-            }
-        }
-
-        function updateCartCount() {
-            cartCountEl.textContent = cartCount;
-        }
-
-        function filterProducts(query) {
-            const q = String(query || '').trim().toLowerCase();
-            if (!q) {
-                renderProducts(PRODUCTS);
-                return;
-            }
-            const filtered = PRODUCTS.filter(p =>
-                p.title.toLowerCase().includes(q) ||
-                p.category.toLowerCase().includes(q)
-            );
-            renderProducts(filtered);
-        }
-
-        // --- Search handling ---
-        document.getElementById('searchBtn').addEventListener('click', () => filterProducts(searchInput.value));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') filterProducts(e.target.value);
-        });
-
-        // --- Mobile menu toggle ---
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileToggle.addEventListener('click', () => {
-            mobileMenu.style.display = mobileMenu.style.display === 'none' || !mobileMenu.style.display ? 'block' : 'none';
-        });
-
-        // --- Simple dropdown (desktop) ---
-        const catMenuBtn = document.getElementById('catMenuBtn');
-        catMenuBtn && catMenuBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Use the category tiles below to filter — this is a demo.');
-        });
-
-        // --- Newsletter subscribe (demo) ---
-        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value.trim();
-            const msg = document.getElementById('newsletterMsg');
-            if (!email || !email.includes('@')) {
-                msg.style.display = 'block';
-                msg.textContent = 'Please enter a valid email address.';
-                msg.style.color = '#ffb3b3';
-                return;
-            }
-            msg.style.display = 'block';
-            msg.style.color = '#cce7ff';
-            msg.textContent = 'Thanks! You are subscribed.';
-            document.getElementById('newsletterEmail').value = '';
-            setTimeout(() => msg.style.display = 'none', 3000);
-        });
-
-        // --- Countdown timer for deal ---
-        (function setupDealTimer() {
-            // Target: 1 day from now (demo)
-            const now = new Date();
-            const target = new Date(now.getTime() + (24 * 60 + 36) * 60 * 1000); // 24h36m
-            function tick() {
-                const diff = target - new Date();
-                const days = Math.floor(diff / (24 * 3600 * 1000));
-                const hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-                const mins = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-                const secs = Math.floor((diff % (60 * 1000)) / 1000);
-                document.getElementById('dealDays').textContent = days;
-                document.getElementById('dealHours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('dealMinutes').textContent = String(mins).padStart(2, '0');
-                document.getElementById('dealSeconds').textContent = String(secs).padStart(2, '0');
-                if (diff <= 0) clearInterval(timer);
-            }
-            tick();
-            const timer = setInterval(tick, 1000);
-        })();
-
-        // --- Small UI bindings ---
-        document.getElementById('shopNow').addEventListener('click', () => window.scrollTo({
-            top: document.getElementById('prod-title').offsetTop - 60,
-            behavior: 'smooth'
-        }));
-        document.getElementById('exploreDeals').addEventListener('click', () => window.location.hash = '#deals');
-        document.getElementById('buyDeal').addEventListener('click', () => {
-            cartCount += 1;
-            updateCartCount();
-            alert('Deal added to cart (demo).');
-        });
-
-        // --- Initialization ---
-        (function init() {
-            renderCategories();
-            renderProducts(PRODUCTS);
-            updateCartCount();
+            // set year
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // init
+            renderSermons();
+            renderEvents();
+            renderTestimonials();
         })();
     </script>
 </body>
-
-</html> 
+</html>
